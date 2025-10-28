@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+## Description: Sync from remote to local
+## Usage: sync [environment]
+## Example: "ddev sync dev"
+## Flags: [{"Name":"files","Usage":"Sync files from remote to local"}]
+
+set -e
+
+#-------------------------- Helper functions --------------------------------
+
+# Console colors
+red='\033[0;31m'
+green='\033[0;32m'
+green_bg='\033[42m'
+yellow='\033[1;33m'
+NC='\033[0m'
+
+#-------------------------- Execution --------------------------------
+
+alias="your-remote-alias"  # TODO: Replace with your actual remote alias
+
+# Check if the first argument is --files, and if so, treat it as no environment
+if [ "$1" == "--files" ]; then
+  env="dev"  # Default environment
+  sync_files=true
+else
+  # Set the default environment to "dev" if no argument is provided
+  env=${1:-"dev"}
+
+  # Check if the provided environment is valid
+  if [[ "$env" != "dev" && "$env" != "stage" && "$env" != "master" ]]; then
+    echo -e "${red}Invalid environment. Use dev, stage, or master.${NC}"
+    exit 1
+  fi
+
+  # Check if the second argument is --files
+  sync_files=false
+  if [ "$2" == "--files" ]; then
+    sync_files=true
+  fi
+fi
+
+# Use the environment variable in the drush commands
+echo -e "${green_bg} Step 1 ${NC}${green} Syncing database from $env...${NC}"
+drush sql-sync @$alias.$env @self -y
+
+# Conditionally run the rsync command if --files is provided
+if [ "$sync_files" = true ]; then
+  echo -e "${green_bg} Step 2 ${NC}${green} Syncing files from $env...${NC}"
+  drush rsync @$alias.$env:%files/ @self:%files -y
+else
+  echo -e "${green_bg} Step 2 ${NC}${green} Syncing files was not requested...${NC}"
+fi
+
+echo -e "${green_bg} Step 3 ${NC}${green} Updating database...${NC}"
+drush updb -y
+
+echo -e "${green_bg} Step 4 ${NC}${green} Syncing config...${NC}"
+drush cim -y
+drush cim -y
+
+echo -e "${green_bg} Step 5 ${NC}${green} Clearing caches...${NC}"
+drush cr
