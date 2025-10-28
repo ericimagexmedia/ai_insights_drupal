@@ -1,0 +1,9 @@
+drupal/docroot/core
+drupal/docroot/sites/*/files
+drupal//files-private
+drupal/docroot/sites/*/private
+drupal/docroot/modules/contrib
+drupal/docroot/themes/contrib
+drupal/docroot/profiles/contrib
+drupal/docroot/libraries/*
+drupal/web/files
