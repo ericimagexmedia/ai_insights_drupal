@@ -1,0 +1,22 @@
+uuid: aab9c319-4f24-4004-b2b0-c3c580ab96c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ai_insights
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: ai_insights_content
+theme: ai_insights
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

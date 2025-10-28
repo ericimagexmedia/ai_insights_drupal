@@ -1,0 +1,20 @@
+uuid: 83f32c70-7736-496b-bb06-ea147487b22b
+langcode: en
+status: true
+dependencies:
+  theme:
+    - ai_insights
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: ai_insights_page_title
+theme: ai_insights
+region: content_above
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

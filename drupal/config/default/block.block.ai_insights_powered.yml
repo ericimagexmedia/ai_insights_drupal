@@ -1,0 +1,22 @@
+uuid: 8614da53-fdd1-44be-bbf3-190f89e8c46d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ai_insights
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: ai_insights_powered
+theme: ai_insights
+region: footer_bottom
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

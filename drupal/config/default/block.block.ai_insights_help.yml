@@ -1,0 +1,22 @@
+uuid: c7b0822d-8882-450b-90b6-9cc7cb4f31f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - ai_insights
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: ai_insights_help
+theme: ai_insights
+region: content_above
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

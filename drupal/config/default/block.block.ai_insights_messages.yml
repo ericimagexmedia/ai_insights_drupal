@@ -1,0 +1,22 @@
+uuid: ef0301a5-cee4-441a-afe4-fbaf85507e0b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ai_insights
+_core:
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
+id: ai_insights_messages
+theme: ai_insights
+region: highlighted
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,23 @@
+uuid: 5349a54c-6025-429a-9d01-65beeae95bf8
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - ai_insights
+_core:
+  default_config_hash: pbbed0hdqGDF-_QWVVTWRAwgDIotFuAvWH5mWUZu0fA
+id: ai_insights_search_form_wide
+theme: ai_insights
+region: secondary_menu
+weight: -5
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility: {  }

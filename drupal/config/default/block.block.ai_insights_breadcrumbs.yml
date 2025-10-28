@@ -1,0 +1,22 @@
+uuid: f40098c4-809f-4552-a848-d71a3eb14e4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ai_insights
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: ai_insights_breadcrumbs
+theme: ai_insights
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }
