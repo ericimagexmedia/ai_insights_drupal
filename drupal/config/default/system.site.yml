@@ -2,13 +2,13 @@ _core:
   default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
 langcode: en
 uuid: 8c2a5dc5-e53a-4846-abb1-4ddcecbaa8c1
-name: 'Drush Site-Install'
+name: 'AI Drupal Insights'
 mail: admin@example.com
 slogan: ''
 page:
   403: ''
   404: ''
-  front: /node
+  front: /node/1
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en
