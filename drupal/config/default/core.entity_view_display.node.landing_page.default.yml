@@ -1,0 +1,41 @@
+uuid: acd17f48-2bfe-4849-a747-2237a01c2870
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.landing_page.field_body
+    - field.field.node.landing_page.field_hero_banner
+    - node.type.landing_page
+  module:
+    - image
+    - text
+    - user
+id: node.landing_page.default
+targetEntityType: node
+bundle: landing_page
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_hero_banner:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }
