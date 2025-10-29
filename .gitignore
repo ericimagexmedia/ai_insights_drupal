@@ -8,3 +8,4 @@ drupal/docroot/profiles/contrib
 drupal/docroot/libraries/*
 drupal/web/files
 drupal/vendor
+bots/venv
