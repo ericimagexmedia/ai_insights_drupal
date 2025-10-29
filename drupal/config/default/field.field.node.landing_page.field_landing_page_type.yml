@@ -1,0 +1,29 @@
+uuid: 54bea62d-e9f4-4f71-b1a9-d4f4d4497094
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_landing_page_type
+    - node.type.landing_page
+    - taxonomy.vocabulary.landing_page_categories
+id: node.landing_page.field_landing_page_type
+field_name: field_landing_page_type
+entity_type: node
+bundle: landing_page
+label: 'Landing Page Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      landing_page_categories: landing_page_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

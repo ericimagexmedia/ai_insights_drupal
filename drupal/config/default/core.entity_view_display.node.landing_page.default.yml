@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.landing_page.field_body
     - field.field.node.landing_page.field_hero_banner
+    - field.field.node.landing_page.field_landing_page_type
     - node.type.landing_page
   module:
     - image
@@ -32,6 +33,14 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_landing_page_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
     region: content
   links:
     settings: {  }

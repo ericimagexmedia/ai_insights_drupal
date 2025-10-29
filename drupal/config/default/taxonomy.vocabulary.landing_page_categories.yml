@@ -1,0 +1,9 @@
+uuid: 6aba8008-04d3-44c0-86d5-4383e220ba98
+langcode: en
+status: true
+dependencies: {  }
+name: 'Landing Page Categories'
+vid: landing_page_categories
+description: 'Categories for Landing Pages'
+weight: 0
+new_revision: false

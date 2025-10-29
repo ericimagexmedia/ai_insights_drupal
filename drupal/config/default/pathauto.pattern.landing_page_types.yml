@@ -1,0 +1,22 @@
+uuid: 89138543-7c8a-439a-a3be-762125029027
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: landing_page_types
+label: 'Landing Page types'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'landing-page-type/[term:name]'
+selection_criteria:
+  74750002-0dcf-4737-8a52-5414bf5a6205:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 74750002-0dcf-4737-8a52-5414bf5a6205
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      landing_page_categories: landing_page_categories
+selection_logic: and
+weight: -5
+relationships: {  }

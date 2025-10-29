@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.landing_page.field_body
     - field.field.node.landing_page.field_hero_banner
+    - field.field.node.landing_page.field_landing_page_type
     - image.style.thumbnail
     - node.type.landing_page
   module:
@@ -39,6 +40,16 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_landing_page_type:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path
