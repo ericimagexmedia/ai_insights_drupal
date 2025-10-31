@@ -1,0 +1,4 @@
+smart_analytics_for_drupal.settings_tab:
+  route_name: smart_analytics_for_drupal.settings
+  title: 'Settings'
+  base_route: smart_analytics_for_drupal.settings

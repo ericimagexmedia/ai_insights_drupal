@@ -1,0 +1,11 @@
+ga4_property_id: ''
+service_account_email: ''
+private_key: ''
+project_id: ''
+token_uri: 'https://oauth2.googleapis.com/token'
+dataset_refresh_interval: 24
+enabled_metrics:
+  - screenPageViews
+  - averageSessionDuration
+  - userEngagementDuration
+  - bounceRate

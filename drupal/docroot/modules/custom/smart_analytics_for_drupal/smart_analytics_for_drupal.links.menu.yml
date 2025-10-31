@@ -1,0 +1,5 @@
+smart_analytics_for_drupal.settings:
+  title: 'Smart Analytics for Drupal Settings'
+  description: 'Configure settings for Smart Analytics for Drupal module.'
+  route_name: smart_analytics_for_drupal.settings
+  parent: system.admin_config_content

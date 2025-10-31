@@ -1,0 +1,7 @@
+smart_analytics_for_drupal.settings:
+  path: '/admin/config/smart-analytics/settings'
+  defaults:
+    _form: '\Drupal\smart_analytics_for_drupal\Form\SettingsForm'
+    _title: 'Smart Analytics Settings'
+  requirements:
+    _permission: 'administer site configuration'
