@@ -16,6 +16,12 @@ PAGES = [
 ]
 SEARCH_URL = BASE + "/search/node?keys="
 
+# 👇 Novas rotas inexistentes (para simular páginas 404)
+BROKEN_PATHS = [
+    "/random-page-xyz", "/about-us-404", "/faculty/dr-john-snowe",
+    "/academics/businessx", "/undefined-path", "/page-not-exist"
+]
+
 # Configuração de log
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
 
@@ -51,7 +57,6 @@ def do_search(driver, term):
 
     if "Your search yielded no results" in driver.page_source:
         logging.info("❌ Search with zero results detected for term '%s'", term)
-        # dispara evento customizado no GA4
         js = """
         if (typeof gtag === 'function') {
           gtag('event', 'search_no_results', {
@@ -88,6 +93,25 @@ def click_some_program(driver):
     except Exception as e:
         logging.debug("No program link clicked: %s", e)
 
+def visit_404_page(driver):
+    """Acessa uma página inexistente (simula erro 404)."""
+    broken = random.choice(BROKEN_PATHS)
+    logging.info("Visiting 404 page: %s", broken)
+    driver.get(BASE + broken)
+    human_sleep(1.5, 3.0)
+    scroll_page(driver)
+    if "Page not found" in driver.page_source or driver.title.startswith("Page not found"):
+        js = """
+        if (typeof gtag === 'function') {
+          gtag('event', 'page_not_found', {
+            page_path: arguments[0],
+            event_label: '404 Page Accessed'
+          });
+        }
+        """
+        driver.execute_script(js, broken)
+        logging.info("🚫 Triggered GA4 event: page_not_found for %s", broken)
+
 def simulate_session(driver):
     """Executa uma sessão de navegação realista."""
     landing = random.choice(PAGES)
@@ -96,23 +120,25 @@ def simulate_session(driver):
     human_sleep(1.5, 4.0)
     scroll_page(driver)
 
-    # Navega ou busca aleatoriamente
+    # Navega, busca ou acessa 404 aleatoriamente
     for _ in range(random.randint(2, 5)):
-        if random.random() < 0.65:
+        roll = random.random()
+        if roll < 0.6:
             path = random.choice(PAGES)
             driver.get(BASE + path)
             human_sleep(1.0, 3.0)
             scroll_page(driver)
             if random.random() < 0.3:
                 click_some_program(driver)
-        else:
-            # Termos com ou sem resultado
+        elif roll < 0.85:
             term = (
                 random.choice(["Nursing", "computer", "design", "business", "environment"])
                 if random.random() < 0.7
                 else ''.join(random.choices("zxqwjplk", k=10))
             )
             do_search(driver, term)
+        else:
+            visit_404_page(driver)
         human_sleep(2.0, 8.0)
 
 # ========== FUNÇÃO PRINCIPAL ==========
@@ -130,7 +156,6 @@ def main():
         "user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0"
     )
 
-    # ✅ Correção: uso correto do Service()
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
