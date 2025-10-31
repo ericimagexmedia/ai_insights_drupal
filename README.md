@@ -1,30 +1,46 @@
 # Ai Insights for Drupal
-AI Insights for Drupal is a modular analytics and intelligence toolkit designed for higher-education websites built on Drupal. It combines data from Google Analytics 4 and Drupal entities to generate natural-language insights, detect outdated content, and predict future engagement using machine learning.
+**AI Insights for Drupal** is a modular analytics and intelligence toolkit built for Drupal websites — designed especially for higher-education institutions and content-driven organizations that want to understand how their content performs, without the complexity of external dashboards.
 
-## Overview
+Instead of relying on the Google Analytics console, this module brings the most important insights directly into Drupal, in an editor-friendly and action-oriented interface — with automatic summaries, clear visual reports, and almost zero configuration.
 
-This project introduces a new layer of intelligence to Drupal by connecting content data and analytics with AI-driven narratives and predictions.
-The goal is to help universities and organizations understand how their content performs, which topics attract engagement, and where to improve.
+## Summary
 
-### Core Features
+**AI Insights for Drupal** isn’t just a simplified copy of Google Analytics. It’s a purpose-built solution for content editors, marketing teams, and site managers who need actionable insights where they work — inside Drupal.
 
-- GA4 connection and basic analytics dashboard.
-- Top-performing pages and time-on-page metrics.
-- Basic "content freshness" report (identify outdated pages).
-- Short AI-generated summary (using Drupal AI).
-- Optional lightweight engagement scoring (rule-based or static model).
+By turning analytics into clear narratives and editor-friendly visuals, the module helps teams **understand, communicate, and improve** content performance with ease.
 
-### Premium (SaaS Integration)
+## Motivation
+Google Analytics 4 (GA4) is powerful, but its interface can be complex and intimidating for content editors. **AI Insights for Drupal** bridges that gap by making analytics approachable and meaningful inside the CMS.
 
-- Advanced predictive analytics (content engagement forecast).
-- Semantic duplication and outdated content detection (via NLP).
-- Full AI-generated narrative reports with recommendations.
-- Automated scheduling and weekly reports.
-- Access to the external AI Insights API (Python microservice).
+- **Per-page insights**: Each content node can display its own analytics and highlights.
+- **Editor-friendly UI**: Simple, contextual, and focused on what matters.
+- **No complex setup**: Connect your GA4 property once — no manual configuration required.
+- **Action over data**: The goal isn’t to show more numbers, but to surface what needs attention.
 
-### Data Flow
 
-- Drupal requests metrics from GA4 (freemium) or from the Python service (premium). (TBD)
-- Python aggregates, analyzes, and predicts engagement patterns.
-- Drupal AI uses LLMs to generate natural-language insights.
-- Results are displayed in the AI Insights Dashboard inside Drupal Admin.
+## Core Features
+
+### 1. GA4 connection and basic analytics dashboard
+Connect your Drupal site to Google Analytics 4 using an API key or property ID. A built-in dashboard displays key performance metrics such as:
+ - Pageviews, average engagement time, and bounce/scroll metrics.
+ - Comparison over time (e.g., last 7 vs. last 30 days).
+> Example: “This page received 32% more views than the previous week.”
+
+### 2. Top-performing pages and time-on-page metrics
+Lists pages with the best performance and identifies those losing momentum. Can be filtered by content type or taxonomy.
+> Example: “The Admissions page kept users for an average of 1m 42s — 25% above the site average.”
+
+### 3. Basic ‘content freshness’ report
+
+Detects outdated or low-traffic pages and highlights content that may need review. Perfect for editorial and marketing teams planning updates.
+
+> Example: “The Our Campus page hasn’t received significant visits in 45 days — consider updating it.”
+
+### 4. Short AI-generated summary (using Drupal AI)
+Uses the Drupal AI module to generate natural-language summaries of analytics data.
+
+> Example: “Business Administration BBA shows steady growth and maintains the highest average read time this month.”
+
+### 5. Optional lightweight engagement scoring
+Applies a simple rule-based/static model to assign an “engagement score” to each node.
+> Example: “Engagement Score: **82 / 100** — high performance, driven by above-average time-on-page and strong scroll depth.”
