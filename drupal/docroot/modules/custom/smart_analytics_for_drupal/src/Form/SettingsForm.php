@@ -4,11 +4,27 @@ namespace Drupal\smart_analytics_for_drupal\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\key\Entity\Key;
+use Drupal\key\KeyRepositoryInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 
 /**
  * Defines the settings form for Smart Analytics for Drupal.
  */
 class SettingsForm extends ConfigFormBase {
+
+  /**
+   * @var \Drupal\key\KeyRepositoryInterface
+   */
+  protected KeyRepositoryInterface $keyRepository;
+
+  public static function create(ContainerInterface $container) {
+    $instance = parent::create($container);
+    $instance->keyRepository = $container->get('key.repository');
+    return $instance;
+  }
 
   /**
    * {@inheritdoc}
@@ -82,13 +98,34 @@ class SettingsForm extends ConfigFormBase {
       '#description' => $this->t('The project_id associated with your Google Cloud project.'),
     ];
 
-    $form['service_account']['private_key'] = [
-      '#type' => 'textarea',
+    $keys = $this->keyRepository->getKeysByType('authentication');
+    $options = [];
+    foreach ($keys as $key) {
+      $options[$key->id()] = $key->label();
+    }
+
+
+    $create_key_url = Url::fromRoute('entity.key.add_form',
+      ['key_type' => 'authentication',], [
+      'attributes' => [
+        'class' => ['use-ajax'],
+        'data-dialog-type' => 'modal',
+        'data-dialog-options' => json_encode(['width' => 700]),
+      ],
+    ]);
+
+    $create_key_link = Link::fromTextAndUrl($this->t('Create new key'), $create_key_url)->toString();
+
+    $form['service_account']['key_reference'] = [
+      '#type' => 'select',
       '#title' => $this->t('Private Key'),
-      '#default_value' => $config->get('private_key'),
-      '#description' => $this->t('Paste the private_key from the service account JSON.'),
-      '#attributes' => ['rows' => 8, 'placeholder' => '-----BEGIN PRIVATE KEY-----'],
+      '#options' => $options,
+      '#default_value' => $config->get('key_reference'),
+      '#description' => $this->t('Select an existing key, or @link.', [
+        '@link' => $create_key_link,
+      ]),
       '#required' => TRUE,
+      '#suffix' => '<div class="description">' . $this->t('If you create a new key, reload this page afterward to see it in the list.') . '</div>',
     ];
 
     // -----------------------------
@@ -131,7 +168,7 @@ class SettingsForm extends ConfigFormBase {
       ->set('ga4_property_id', $form_state->getValue('ga4_property_id'))
       ->set('service_account_email', $form_state->getValue('service_account_email'))
       ->set('project_id', $form_state->getValue('project_id'))
-      ->set('private_key', $form_state->getValue('private_key'))
+      ->set('key_reference', $form_state->getValue('key_reference'))
       ->set('token_uri', $form_state->getValue('token_uri'))
       ->set('enabled_metrics', array_filter($form_state->getValue('enabled_metrics')))
       ->save();

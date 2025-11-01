@@ -1,8 +1,8 @@
 name: Smart Analytics for Drupal
-description: Integrates Google Tag Manager and Google Analytics 4 with Drupal for enhanced analytics capabilities.
+description: Integrates Google Analytics 4 with Drupal for enhanced analytics capabilities.
 type: module
 core_version_requirement: ^10 || ^11
-configure: google_tag.settings_form
+configure: smart_analytics_for_drupal.settings
 package: 'Analytics'
 dependencies:
   - key:key

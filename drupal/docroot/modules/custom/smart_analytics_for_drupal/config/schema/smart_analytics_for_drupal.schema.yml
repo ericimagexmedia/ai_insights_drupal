@@ -12,10 +12,9 @@ smart_analytics_for_drupal.settings:
       label: 'Service Account Email'
       description: 'The client_email from the Google Cloud service account JSON.'
 
-    private_key:
-      type: text
+    key_reference:
+      type: string
       label: 'Private Key'
-      description: 'The private_key from the Google Cloud service account JSON.'
 
     project_id:
       type: string
