@@ -1,0 +1,27 @@
+<?php
+
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Ajax\CloseModalDialogCommand;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function smart_analytics_for_drupal_form_key_add_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // If the form is being displayed in an AJAX request (modal), add AJAX submit handler.
+  if (\Drupal::request()->isXmlHttpRequest()) {
+    $form['actions']['submit']['#ajax'] = [
+      'callback' => '_smart_analytics_for_drupal_key_modal_submit',
+    ];
+  }
+}
+
+/**
+ * AJAX callback to close the modal after key creation.
+ */
+function _smart_analytics_for_drupal_key_modal_submit(array &$form, FormStateInterface $form_state) {
+  $response = new AjaxResponse();
+  $response->addCommand(new CloseModalDialogCommand());
+  return $response;
+}

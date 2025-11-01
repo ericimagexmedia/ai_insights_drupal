@@ -46,9 +46,9 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $config = $this->config('smart_analytics_for_drupal.settings');
 
-    // -----------------------------
-    // GA4 PROPERTY CONFIGURATION
-    // -----------------------------
+    /**
+     * GA4 Property Config Section.
+     */
     $form['ga4'] = [
       '#type' => 'details',
       '#title' => $this->t('Google Analytics 4 Property'),
@@ -63,9 +63,9 @@ class SettingsForm extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
-    // -----------------------------
-    // CREATE VERTICAL TABS
-    // -----------------------------
+    /**
+     * Create vertical tabs for settings sections.
+     */
     $form['settings_tabs'] = [
       '#type' => 'vertical_tabs',
       '#title' => $this->t('Settings'),
@@ -74,9 +74,9 @@ class SettingsForm extends ConfigFormBase {
       '#weight' => 20,
     ];
 
-    // -----------------------------
-    // TAB 1: SERVICE ACCOUNT
-    // -----------------------------
+    /**
+     * TAB 1: SERVICE ACCOUNT CREDENTIALS
+     */
     $form['service_account'] = [
       '#type' => 'details',
       '#title' => $this->t('Service Account Credentials'),
@@ -128,9 +128,9 @@ class SettingsForm extends ConfigFormBase {
       '#suffix' => '<div class="description">' . $this->t('If you create a new key, reload this page afterward to see it in the list.') . '</div>',
     ];
 
-    // -----------------------------
-    // TAB 2: ADVANCED SETTINGS
-    // -----------------------------
+    /**
+     * TAB 2: ADVANCED SETTINGS
+     */
     $form['advanced'] = [
       '#type' => 'details',
       '#title' => $this->t('Advanced Settings'),
@@ -156,6 +156,8 @@ class SettingsForm extends ConfigFormBase {
       ],
       '#description' => $this->t('Select which metrics should be collected and displayed.'),
     ];
+
+    $form['#attached']['library'][] = 'smart_analytics_for_drupal/key_refresh';
 
     return parent::buildForm($form, $form_state);
   }

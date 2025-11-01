@@ -5,3 +5,10 @@ smart_analytics_for_drupal.settings:
     _title: 'Smart Analytics Settings'
   requirements:
     _permission: 'administer site configuration'
+
+smart_analytics_for_drupal.refresh_keys:
+  path: '/smart-analytics/refresh-keys'
+  defaults:
+    _controller: '\Drupal\smart_analytics_for_drupal\Controller\KeyRefreshController::refreshKeys'
+  requirements:
+    _permission: 'administer smart analytics for drupal'

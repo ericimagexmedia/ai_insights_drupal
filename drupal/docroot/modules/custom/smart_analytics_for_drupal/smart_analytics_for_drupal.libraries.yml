@@ -1,0 +1,10 @@
+key_refresh:
+  version: 1.x
+  js:
+    js/key-refresh.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+    - core/drupal.ajax
+    - core/drupal.dialog.ajax
