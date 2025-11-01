@@ -107,14 +107,6 @@ class SettingsForm extends ConfigFormBase {
       '#description' => $this->t('Usually this should remain as the default value.'),
     ];
 
-    $form['advanced']['dataset_refresh_interval'] = [
-      '#type' => 'number',
-      '#title' => $this->t('Data Refresh Interval (hours)'),
-      '#default_value' => $config->get('dataset_refresh_interval') ?? 24,
-      '#description' => $this->t('Determines how often the module should fetch new analytics data.'),
-      '#min' => 1,
-    ];
-
     $form['advanced']['enabled_metrics'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Enabled Metrics'),
@@ -141,7 +133,6 @@ class SettingsForm extends ConfigFormBase {
       ->set('project_id', $form_state->getValue('project_id'))
       ->set('private_key', $form_state->getValue('private_key'))
       ->set('token_uri', $form_state->getValue('token_uri'))
-      ->set('dataset_refresh_interval', $form_state->getValue('dataset_refresh_interval'))
       ->set('enabled_metrics', array_filter($form_state->getValue('enabled_metrics')))
       ->save();
 

@@ -28,12 +28,6 @@ smart_analytics_for_drupal.settings:
       description: 'OAuth token URI used for service account authentication.'
       default_value: 'https://oauth2.googleapis.com/token'
 
-    dataset_refresh_interval:
-      type: integer
-      label: 'Dataset Refresh Interval (hours)'
-      description: 'How often analytics data should be refreshed from GA4.'
-      default_value: 24
-
     enabled_metrics:
       type: sequence
       label: 'Enabled Metrics'
