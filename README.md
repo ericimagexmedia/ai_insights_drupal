@@ -109,5 +109,38 @@ Insights are presented in natural language, such as:
 - “This page retains users but does not drive further navigation.”
 - “Users leave this page quickly — consider improving structure or relevance.”
 
+---
 
-**Work-in-progress**...
+#Why This Matters?
+
+Google Analytics is powerful, but not editor-friendly.
+
+AI Insights for Drupal solves this by:
+
+- Bringing insights into the CMS
+- Removing the need for external dashboards
+- Making analytics understandable and actionable
+
+---
+
+Future Direction
+
+This MVP lays the foundation for:
+
+- Engagement scoring
+- Content ranking
+- Predictive analytics
+- Machine learning models
+
+But only after validating real usage and value.
+
+---
+
+**Summary**
+
+AI Insights for Drupal (MVP) is a focused, practical tool that helps answer:
+
+- Are users engaging with this content?
+- Are users continuing their journey?
+
+By surfacing these answers directly inside Drupal, it empowers editors to improve content with confidence — without needing to interpret complex analytics platforms.
